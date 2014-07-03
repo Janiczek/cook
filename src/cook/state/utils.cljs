@@ -1,4 +1,4 @@
-(ns cook.utils.state
+(ns cook.state.utils
   (:require [cook.state :refer [state]]
             [cook.data :refer [locations]]))
 

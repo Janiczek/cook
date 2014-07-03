@@ -1,5 +1,5 @@
-(ns cook.utils.commands
-  (:require [cook.utils.state :refer [current-location
+(ns cook.commands.utils
+  (:require [cook.state.utils :refer [current-location
                                       is-there?
                                       have?]]
             [cook.data :refer [locations

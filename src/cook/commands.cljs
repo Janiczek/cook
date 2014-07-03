@@ -1,9 +1,9 @@
 (ns cook.commands
-  (:require [cook.utils.commands :refer [prepare
+  (:require [cook.commands.utils :refer [prepare
                                          cmd
                                          parse-by
                                          find-object]]
-            [cook.utils.state :refer [empty-inventory?
+            [cook.state.utils :refer [empty-inventory?
                                       current-location
                                       can-go?
                                       have?
