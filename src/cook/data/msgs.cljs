@@ -1,7 +1,9 @@
 (ns cook.data.msgs)
 
 (def intro "Welcome to Cook's Assistant!
-Created by Martin Janiczek (<a href=\"http://twitter.com/janiczek\">@janiczek</a>)
+Created by Martin Janiczek (<a href=\"http://twitter.com/janiczek\">@janiczek</a>).
+Inspired by <a href=\"http://runescape.com\">RuneScape</a>. RuneScape is a registered trademark of <a href=\"http://jagex.com\">Jagex Limited</a>.
+The source code is on <a href=\"https://github.com/janiczek/cook\">GitHub</a>.
 
 The game now begins...")
 
