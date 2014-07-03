@@ -7,6 +7,8 @@ RuneScape® is a registered trade mark of Jagex Limited in the United Kingdom, t
 - `lein cljsbuild once prod` for `index.html`
 - `lein cljsbuild once dev` for `index2.html`
 
+<strong>Play <a href="http://janiczek.github.io/cook/">here</a>.</strong>
+
 ### cook.core
 - initialization, handler for input
 
