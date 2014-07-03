@@ -25,6 +25,7 @@
   (aset el-input "onkeyup" enter-handler)
   (h/content! intro)
   (handle-command "help")
+  (handle-command "look")
   (i/focus!))
 
 (init)
