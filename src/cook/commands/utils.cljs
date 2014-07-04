@@ -2,8 +2,7 @@
   (:require [cook.state.utils :refer [current-location
                                       is-there?
                                       have?]]
-            [cook.data :refer [locations
-                               item-synonyms]]
+            [cook.data :refer [item-synonyms]]
             [clojure.string :refer [lower-case
                                     trim
                                     replace-first]]))
@@ -35,18 +34,22 @@
 (defn prepare [command]
   (lower-case (trim command)))
 
-(defn cmd [command type synonyms functions]
+(defn cmd [state command type synonyms functions]
   (let [words (rest-of command (get synonyms type))]
-    ((get functions type) words)))
+    ((get functions type) state words)))
 
-(defn find-object [words]
-  (let [location (current-location)
-        specials-synonyms (get-in locations [location :specials-synonyms])
-        npcs-synonyms     (get-in locations [location :npcs-synonyms])
+(defn get-synonym [state location type]
+  (get-in state [:locations location type]))
+
+(defn find-object [state words]
+  ;; TODO is this a good place for this fn?
+  (let [location (current-location state)
+        specials-synonyms (get-synonym state location :specials-synonyms)
+        npcs-synonyms     (get-synonym state location :npcs-synonyms)
         synonyms (merge-with concat
                    (into {} (filter (fn [[item _]]
-                                      (or (is-there? item)
-                                          (have? item)))
+                                      (or (is-there? state item)
+                                          (have? state item)))
                                     item-synonyms))
                    specials-synonyms
                    npcs-synonyms)

@@ -4,6 +4,7 @@ pom.xml
 /classes/
 /out/
 /out2/
+cook2.js
 /target/
 .lein-deps-sum
 .lein-repl-history

@@ -1,35 +1,34 @@
 (ns cook.describe
   (:require [cook.data :refer [items-descriptions]]))
 
-(defn describe-location [location locations]
-  (get-in locations [location :description]))
+(defn describe-location [state location]
+  (get-in state [:locations location :description]))
 
-(defn describe-directions [location locations]
+(defn describe-directions [state location]
   (apply str
     (interpose "\n"
-      (vals (get-in locations [location :directions])))))
+      (vals (get-in state [:locations location :directions])))))
 
-(defn describe-items [location locations state]
-  (let [current-items (get-in @state [:items location])
-        descriptions (map #(get-in locations [location :items %])
+(defn describe-items [state location]
+  (let [current-items (get-in state [:items location])
+        descriptions (map #(get-in state [:locations location :items %])
                           current-items)]
     (apply str
       (interpose "\n"
         descriptions))))
 
-(defn describe-specials [location locations]
+(defn describe-specials [state location]
   (apply str
     (interpose "\n"
-      (vals (get-in locations [location :specials])))))
+      (vals (get-in state [:locations location :specials])))))
 
-(defn describe-npcs [location locations]
+(defn describe-npcs [state location]
   (apply str
     (interpose "\n"
-      (vals (get-in locations [location :npcs])))))
-
+      (vals (get-in state [:locations location :npcs])))))
 
 (defn describe-inventory [state]
-  (let [current-items (get-in @state [:player :inventory])
+  (let [current-items (get-in state [:player :inventory])
         descriptions (map #(str "- " (get items-descriptions %))
                           current-items)]
     (apply str
